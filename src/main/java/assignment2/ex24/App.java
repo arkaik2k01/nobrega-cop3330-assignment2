@@ -32,12 +32,13 @@ public class App {
 
     public static void main(String[] args) {
         App prog = new App();
-
+        //Input
         String str1 = prog.getStrings("Enter the first string: ");
         String str2 = prog.getStrings("Enter the second string: ");
 
         Anagrams anagram = new Anagrams(str1, str2);
 
+        //Print results
         prog.printOutput(anagram);
     }
 

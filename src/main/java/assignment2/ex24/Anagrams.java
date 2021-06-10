@@ -27,13 +27,13 @@ public class Anagrams {
     {
         if(str1.length() != str2.length())
             return false;
-
+        //Convert to sorted array
         char[] charArr1 = toSortChar(str1);
         char[] charArr2 = toSortChar(str2);
-
+        //Compare to check if anagram
         for(int i = 0; i < str1.length(); i++)
         {
-            if(charArr1[i] != charArr2[i])
+            if(Character.toLowerCase(charArr1[i]) != Character.toLowerCase(charArr2[i]))
                 return false;
         }
         return true;
