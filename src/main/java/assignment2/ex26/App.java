@@ -37,10 +37,29 @@ Rework the formula so the program can accept the number of months as an input an
 Create a version of the program that lets the user choose whether to figure out the number of months until payoff or the amount needed to pay per month.
 */
 
+import java.awt.desktop.SystemEventListener;
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
+        App prog = new App();
+        //Input
+        double balance = prog.getInput("What is your balance? ");
+        double apr = prog.getInput("What is the APR in the card (as a percent)? ");
+        double monthlyPayment = prog.getInput("What is the monthly payment you can make? ");
 
+        Calculator calculate = new Calculator(balance, apr, monthlyPayment);
+
+        System.out.println("It will take you " + calculate.calculateMonthsUntilPaidOff() + " months to pay off this card");
+    }
+
+    private double getInput(String prompt)
+    {
+        System.out.print(prompt);
+        return in.nextDouble();
     }
 }
