@@ -33,6 +33,8 @@ public class App
 {
     public static void main(String[] args)
     {
+        App prog = new App();
 
+        int[] num = prog.getNumbers
     }
 }

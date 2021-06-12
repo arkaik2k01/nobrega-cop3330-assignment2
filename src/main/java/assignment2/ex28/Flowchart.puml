@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+start
+:App;
+:Call for Input;
+repeat :"Enter a number";
+    :Add;
+repeat while (5 inputs?) is (no)
+:Return result;
+stop
+
+
+@enduml
