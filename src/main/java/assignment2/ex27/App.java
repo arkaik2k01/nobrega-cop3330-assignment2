@@ -44,10 +44,27 @@ Implement this as a GUI application or web application that gives immediate feed
 Repeat the process if the input is not valid.
 */
 
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
+        App prog = new App();
 
+        String name = prog.getInput("Enter the first name: ");
+        String lastName = prog.getInput("Enter the last name: ");
+        String zipCode = prog.getInput("Enter the ZIP code: ");
+        String employeeID = prog.getInput("Enter the employee ID: ");
+
+
+    }
+
+    private String getInput(String prompt)
+    {
+        System.out.print(prompt);
+        return in.nextLine();
     }
 }
