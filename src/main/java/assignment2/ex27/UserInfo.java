@@ -26,18 +26,22 @@ public class UserInfo
     public void checkFirstName(String name)
     {
         if (name.isEmpty())
-            firstNameFlag++;
-        if (name.length() < 2)
-            firstNameFlag += 2;
+            firstNameFlag = 1;
+        if (name.length() < 2 && !name.isEmpty())
+            firstNameFlag = 2;
+        if(name.length() < 2 && name.isEmpty())
+            firstNameFlag = 3;
     }
 
     //0 when good. 1 when empty. 2 when short. 3 when all
     public void checkLastName(String name)
     {
         if (name.isEmpty())
-            lastNameFlag++;
-        if (name.length() < 2)
-            lastNameFlag += 2;
+            lastNameFlag = 1;
+        if (name.length() < 2 && !name.isEmpty())
+            lastNameFlag = 2;
+        if(name.length() < 2 && name.isEmpty())
+            lastNameFlag = 3;
     }
 
     //0 when good. 1 when not a match
@@ -50,13 +54,17 @@ public class UserInfo
         if (!(Character.isAlphabetic(empID.charAt(0)) && Character.isAlphabetic(empID.charAt(1)) && empID.charAt(2) == '-' && Character.isDigit(empID.charAt(4))
                 && Character.isDigit(empID.charAt(5)) && Character.isDigit(empID.charAt(6)))) {
             empIDFlag++;
-            return;
         }
     }
 
     //0 when good. 1 when not numeric
     public void checkZIP(String zip)
     {
+        if(zip.isEmpty()) {
+            ZIPflag++;
+            return;
+        }
+
         for (int i = 0; i < zip.length(); i++) {
             if (!(Character.isDigit(zip.charAt(i)))) {
                 ZIPflag++;
@@ -86,4 +94,23 @@ public class UserInfo
         return ZIPflag;
     }
 
+    public void setFirstNameFlag(int firstNameFlag)
+    {
+        this.firstNameFlag = firstNameFlag;
+    }
+
+    public void setLastNameFlag(int lastNameFlag)
+    {
+        this.lastNameFlag = lastNameFlag;
+    }
+
+    public void setEmpIDFlag(int empIDFlag)
+    {
+        this.empIDFlag = empIDFlag;
+    }
+
+    public void setZIPflag(int ZIPflag)
+    {
+        this.ZIPflag = ZIPflag;
+    }
 }
