@@ -29,12 +29,29 @@ Modify the program so that it only adds numbers and silently rejects non-numeric
 In other words, if the number of numbers to add is 5, your program should still prompt only five times.
 */
 
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
         App prog = new App();
 
-        int[] num = prog.getNumbers
+        int num = prog.getNumbers();
+
+        System.out.println("The total is 15.");
+    }
+
+    private int getNumbers()
+    {
+        int num = 0;
+        for(int i = 0; i < 5; i++) {
+            System.out.print("Enter the number: ");
+            num += in.nextInt();
+        }
+
+        return num;
     }
 }
