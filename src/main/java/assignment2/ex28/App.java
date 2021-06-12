@@ -39,19 +39,23 @@ public class App
     {
         App prog = new App();
 
-        int num = prog.getNumbers();
+        int num = prog.addNumbers();
 
         System.out.println("The total is 15.");
     }
 
-    private int getNumbers()
+    private int addNumbers()
     {
         int num = 0;
         for(int i = 0; i < 5; i++) {
-            System.out.print("Enter the number: ");
-            num += in.nextInt();
+            num += promptNumber();
         }
-
         return num;
+    }
+
+    private int promptNumber()
+    {
+        System.out.print("Enter the number: ");
+        return in.nextInt();
     }
 }
