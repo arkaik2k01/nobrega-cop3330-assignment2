@@ -49,6 +49,7 @@ import java.util.Scanner;
 public class App
 {
     private static final Scanner in = new Scanner(System.in);
+    private static UserInfo validate = new UserInfo();
 
     public static void main(String[] args)
     {
@@ -59,12 +60,76 @@ public class App
         String zipCode = prog.getInput("Enter the ZIP code: ");
         String employeeID = prog.getInput("Enter the employee ID: ");
 
-
+        validate.checkFirstName(name);
+        validate.checkLastName(lastName);
+        validate.checkZIP(zipCode);
+        validate.checkEmpID(employeeID);
     }
 
     private String getInput(String prompt)
     {
         System.out.print(prompt);
         return in.nextLine();
+    }
+    
+    private void validateInput() {
+        if(validate.getFirstNameFlag() == 0 && validate.getLastNameFlag() == 0 && validate.getZIPflag() == 0 && validate.getEmpIDFlag() == 0)
+        {
+            System.out.println("There were no errors found");
+            return;
+        }
+
+        validateFirstName();
+        validateLastName();
+        validateZIP();
+        validateID();
+    }
+
+    private void validateFirstName()
+    {
+        //0 when good. 1 when empty. 2 when short. 3 when all
+        if(validate.getFirstNameFlag() == 1)
+        {
+            System.out.println("First name must be filled in.");
+        }
+        if(validate.getFirstNameFlag() == 2)
+        {
+            System.out.println("The First name must be at least two characters long");
+        }
+        if (validate.getFirstNameFlag() == 3)
+        {
+            System.out.println("First name must be filled in.");
+            System.out.println("The first name must be at least two characters long");
+        }
+    }
+
+    private void validateLastName()
+    {
+        //0 when good. 1 when empty. 2 when short. 3 when all
+        if(validate.getLastNameFlag() == 1)
+        {
+            System.out.println("Last name must be filled in.");
+        }
+        if(validate.getLastNameFlag() == 2)
+        {
+            System.out.println("The last name must be at least two characters long");
+        }
+        if (validate.getLastNameFlag() == 3)
+        {
+            System.out.println("Last name must be filled in.");
+            System.out.println("The last name must be at least two characters long");
+        }
+    }
+
+    private void validateZIP()
+    {
+        if(validate.getZIPflag() == 1)
+            System.out.println("Zip code must be a 5 digit number");
+    }
+
+    private void validateID()
+    {
+        if(validate.getEmpIDFlag() == 1)
+            System.out.println("The employee ID must be in the format of AA-1234.");
     }
 }
