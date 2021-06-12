@@ -32,14 +32,47 @@ Constraints
 Don’t allow the user to enter 0.
 Don’t allow non-numeric values.
 Use a loop to trap bad input, so you can ensure that the user enters valid values.
+
 Challenge
 Display a different error message when the user enters 0.
 */
 
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
-        App prog = new App;
+        App prog = new App();
+
+        int years = 72 / prog.getRateOfReturn();
+
+        System.out.println("It will take "+ years +" years to double your initial investment");
+    }
+
+    private int getRateOfReturn()
+    {
+        String rate;
+        while(true) {
+            rate = promptUser("What is the rate of return? ");
+            try {
+                int num = Integer.parseInt(rate);
+                if (num != 0) {
+                    return num;
+                }
+            } catch (Exception e) {
+                System.out.println("Sorry, thats not a valid input.");
+                continue;
+            }
+            System.out.println("Sorry, thats not a valid input.");
+        }
+    }
+
+    private String promptUser(String prompt)
+    {
+        System.out.print(prompt);
+        return in.nextLine();
     }
 }
