@@ -34,16 +34,57 @@ Jeremy Goodwin
 
 Constraint
 Use an array or list to store the names.
+
 Challenges
 If the user enters a name that’s not found, print out an error message stating that the name does not exist.
 Read in the list of employees from a file, with each employee on its own line.
 Write the output to the same file you read in.
 */
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
+        ArrayList<String> users = new ArrayList<String>();
+        App prog = new App();
 
+        prog.fillList(users);
+        prog.printUserList(users);
+
+        System.out.print("Enter an employee name to remove: ");
+        String toRemove = in.nextLine();
+        prog.removeName(users, toRemove);
+
+
+        prog.printUserList(users);
+    }
+
+    private void printUserList(ArrayList<String> users)
+    {
+        System.out.println("There are " + users.size() + " employees.");
+        for (int i = 0; i < users.size(); i++) {
+            System.out.println(users.get(i));
+        }
+    }
+
+    private void fillList(ArrayList<String> users)
+    {
+        users.add("John Smith");
+        users.add("Jackie Jackson");
+        users.add("Chris Jones");
+        users.add("Amanda Cullen");
+        users.add("Jeremy Goodwin");
+    }
+
+    private void removeName(ArrayList<String> users, String name)
+    {
+        if (users.contains(name)) {
+            users.remove(name);
+        }
     }
 }
