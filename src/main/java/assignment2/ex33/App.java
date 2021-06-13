@@ -23,10 +23,18 @@ Implement this as a GUI application.
 If available, use native device libraries to allow you to “shake” the 8 ball.
 */
 
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
+        System.out.println("What's your question? \n> ");
+        String question = in.nextLine();
+        MagicBall ball = new MagicBall();
 
+        System.out.println(ball.generateAnswer());
     }
 }
