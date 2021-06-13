@@ -31,7 +31,8 @@ public class App
 
     public static void main(String[] args)
     {
-        System.out.println("What's your question? \n> ");
+        System.out.println("What's your question? ");
+        System.out.print("> ");
         String question = in.nextLine();
         MagicBall ball = new MagicBall();
 
