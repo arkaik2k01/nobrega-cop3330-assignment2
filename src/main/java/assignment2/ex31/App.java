@@ -37,12 +37,54 @@ Challenge
 Implement this as a GUI program that allows the user to use a slider control for the intensity, and update the interface in real time as the slider moves.
 */
 
+import java.util.Scanner;
+
 public class App
 {
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
         App prog = new App();
 
+        int restHR = prog.getInput("Resting pulse: ");
+        int age = prog.getInput("Age: ");
 
+        KarvonenCalc calculate = new KarvonenCalc(restHR, age);
+
+        prog.sendOutput(calculate);
+    }
+
+    private int getInput(String prompt)
+    {
+        String rate;
+        while (true) {
+            rate = promptUser(prompt);
+            try {
+                int num = Integer.parseInt(rate);
+                if (num != 0) {
+                    return num;
+                }
+            } catch (Exception e) {
+                System.out.println("Sorry, thats not a valid input.");
+                continue;
+            }
+            System.out.println("Sorry, thats not a valid input.");
+        }
+    }
+
+    private String promptUser(String prompt)
+    {
+        System.out.print(prompt);
+        return in.nextLine();
+    }
+
+    private void sendOutput(KarvonenCalc calculate)
+    {
+        System.out.printf("%12s | %7s%n", "Intensity", "Rate");
+        System.out.println("-------------|--------");
+        for(int i = 55; i < 100; i += 5) {
+            System.out.printf("%11d%% | %3.0f bmp%n", i, calculate.getTargetHeartRate(i));
+        }
     }
 }
