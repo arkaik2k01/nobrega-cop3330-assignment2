@@ -64,7 +64,7 @@ public class App
         prog.printUserList(users);
     }
 
-    private void printUserList(ArrayList<String> users)
+    public void printUserList(ArrayList<String> users)
     {
         System.out.println("There are " + users.size() + " employees.");
         for (int i = 0; i < users.size(); i++) {
@@ -72,7 +72,7 @@ public class App
         }
     }
 
-    private void fillList(ArrayList<String> users)
+    public void fillList(ArrayList<String> users)
     {
         users.add("John Smith");
         users.add("Jackie Jackson");
@@ -81,7 +81,7 @@ public class App
         users.add("Jeremy Goodwin");
     }
 
-    private void removeName(ArrayList<String> users, String name)
+    public void removeName(ArrayList<String> users, String name)
     {
         if (users.contains(name)) {
             users.remove(name);

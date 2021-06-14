@@ -41,7 +41,7 @@ public class App
 
         int num = prog.addNumbers();
 
-        System.out.println("The total is 15.");
+        System.out.println("The total is "+ num);
     }
 
     private int addNumbers()
