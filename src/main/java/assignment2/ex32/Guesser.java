@@ -30,28 +30,45 @@ public class Guesser
     private int keyNumber; //NUMBER TO GUESS
     private int guess = 0; //Number of guesses
 
-    public int setRandomNumber(int difficulty) {
-        if(difficulty == 1)
-            this.keyNumber = (int)(Math.random()*(10)+1);
-        if(difficulty == 2)
-            this.keyNumber = (int)(Math.random()*(100)+1);
+    public int setRandomNumber(int difficulty)
+    {
+        if (difficulty == 1)
+            this.keyNumber = (int) (Math.random() * (10) + 1);
+        if (difficulty == 2)
+            this.keyNumber = (int) (Math.random() * (100) + 1);
         if (difficulty == 3)
-            this.keyNumber = (int)(Math.random()*(1000)+1);
+            this.keyNumber = (int) (Math.random() * (1000) + 1);
         return 0;
     }
 
     //0 low. 1 higher. 2 correct
-    public int assertGuess(int guess) {
-        if(guess < keyNumber) {
+    public int assertGuess(int guess)
+    {
+        if (guess < keyNumber) {
             return 0;
         }
         if (guess > keyNumber) {
             return 1;
         }
-        if(guess == keyNumber) {
+        if (guess == keyNumber) {
             return 2;
         }
         return 3;
+    }
+
+    public int getKeyNumber()
+    {
+        return keyNumber;
+    }
+
+    public void setKeyNumber(int keyNumber)
+    {
+        this.keyNumber = keyNumber;
+    }
+
+    public void setGuess(int guess)
+    {
+        this.guess = guess;
     }
 
     public int getGuess()
