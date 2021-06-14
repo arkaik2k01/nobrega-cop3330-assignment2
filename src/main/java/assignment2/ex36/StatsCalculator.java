@@ -117,15 +117,16 @@ public class StatsCalculator
         for (int i = 0; i < this.numList.size(); i++) {
             sum += this.numList.get(i);
         }
-        this.stdDeviation = Math.sqrt((Math.pow(sum - this.average, 2) / this.numList.size()));
+        this.stdDeviation = Math.sqrt((Math.pow(sum - this.average, 2) / this.numList.size() - 1));
     }
 
     public void printList()
     {
         System.out.print("The numbers are: ");
         for (int i = 0; i < numList.size(); i++) {
-            System.out.println(numList.get(i) +" ");
+            System.out.print(numList.get(i) +" ");
         }
+        System.out.print("\n");
     }
 
 }

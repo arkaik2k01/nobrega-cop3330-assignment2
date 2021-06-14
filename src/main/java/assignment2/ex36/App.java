@@ -70,12 +70,11 @@ public class App
                     return;
                 }
                 pop.addToList(Integer.parseInt(input));
-
+                continue;
             } catch (Exception e) {
                 System.out.println("Sorry, that's not a valid input.");
                 continue;
             }
-            System.out.println("Sorry, that's not a valid input.");
         }
     }
 
