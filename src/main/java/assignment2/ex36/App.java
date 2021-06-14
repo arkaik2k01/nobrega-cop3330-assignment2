@@ -38,10 +38,63 @@ Challenges
 Have the program read in numbers from an external file instead of prompting for the values.
 */
 
+import java.util.Scanner;
+
 public class App
 {
+    static StatsCalculator pop = new StatsCalculator();
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args)
     {
+        App prog = new App();
+        //Loop and get response time until done
+        prog.getResponseTime();
+        //Print results
+        pop.printList();
+        prog.printResult("The average is", pop.getAverage());
+        prog.printResult("The minimum is", pop.getMin());
+        prog.printResult("The maximum is", pop.getMax());
+        prog.printResult("The standard deviation is", pop.getStdDeviation());
 
     }
+
+
+    public void getResponseTime()
+    {
+        String input = "";
+        while (!input.equalsIgnoreCase("done")) {
+            input = getNumber();
+            try {
+                if (input.equalsIgnoreCase("done")) {
+                    return;
+                }
+                pop.addToList(Integer.parseInt(input));
+
+            } catch (Exception e) {
+                System.out.println("Sorry, that's not a valid input.");
+                continue;
+            }
+            System.out.println("Sorry, that's not a valid input.");
+        }
+    }
+
+    private String getNumber()
+    {
+        String input;
+        System.out.print("Enter a number: ");
+        input = in.nextLine();
+        return input;
+    }
+
+    private void printResult(String prompt, int num)
+    {
+        System.out.println(prompt + " " + num);
+    }
+
+    private void printResult(String prompt, double num)
+    {
+        System.out.println(prompt + " " + num);
+    }
 }
+
